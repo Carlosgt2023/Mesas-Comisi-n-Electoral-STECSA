@@ -3,95 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mesas de Votación Elecciones STECSA Comisión Electoral 2,025</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Evento Terminado - STECSA</title>
 </head>
 <body>
-    
-    <br>
     <div class="container">
-        <div class="contenedor-imagenes" style="text-align: center;">
-            <img src="static/logostecsa.png" class="logo">
-            <img src="static/logocomisionelectoral.png" class="logo">
+        <div class="icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
         </div>
-        <br>
-        <br>
-        <div class="header">
-            <h1>Mesas de Votación Elecciones</h1>
-            <h1>STECSA</h1>
-            <h1>Comisión Electoral 2,025</h1>
-            <p class="subtitle">🔍 Ingresa el código para buscar información</p>
+        
+        <h1>Evento Terminado</h1>
+        
+        <div class="divider"></div>
+        
+        <p class="message">
+            Este evento ha finalizado exitosamente. Gracias por su participación.
+        </p>
+        
+        <div class="footer">
+            Sistema de Consulta STECSA © 2025
         </div>
-
-        <form method="POST" action="{{ url_for('buscar') }}">
-            <div class="search-box">
-                <input type="text" name="codigo" placeholder="Ingrese código" required autofocus>
-                <button type="submit">
-                    <span class="button-text">Buscar</span>
-                    <span class="button-icon">🔎</span>
-                </button>
-            </div>
-        </form>
-
-        {% if error %}
-            <div class="alert alert-error">
-                <strong>⚠️ Error:</strong> {{ error }}
-            </div>
-        {% endif %}
-
-        {% if codigo %}
-            {% if resultado %}
-                <div class="result-card">
-                    <div class="result-header">
-                        <h3>✅ Resultado encontrado</h3>
-                        <span class="codigo-badge">Código: {{ codigo }}</span>
-                    </div>
-                    
-                    <div class="result-content">
-                        <div class="info-item">
-                            <span class="info-label">👤 Nombre:</span>
-                            <span class="info-value">{{ resultado[0] }}</span>
-                        </div>
-                        
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <span class="info-label">📊 Mesa:</span>
-                                <span class="info-value">{{ resultado[1] }}</span>
-                            </div>
-                            
-                            <div class="info-item">
-                                <span class="info-label">📊 Hoja:</span>
-                                <span class="info-value">{{ resultado[2] }}</span>
-                            </div>
-                            
-                            <div class="info-item">
-                                <span class="info-label">📊 Linea:</span>
-                                <span class="info-value">{{ resultado[3] }}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="button-container">
-                            <a href="{{ url_for('index') }}" class="btn-nueva-busqueda">
-                                🔄 Nueva Búsqueda
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            {% else %}
-                <div class="alert alert-warning">
-                    <strong>❌ No encontrado:</strong> No se encontró el código "{{ codigo }}"
-                </div>
-                <div class="button-container">
-                    <a href="{{ url_for('index') }}" class="btn-nueva-busqueda">
-                        🔄 Nueva Búsqueda
-                    </a>
-                </div>
-            {% endif %}
-        {% endif %}
     </div>
-
-    <footer>
-        <p>Sistema de Consulta STECSA © 2025</p>
-    </footer>
 </body>
 </html>
+
